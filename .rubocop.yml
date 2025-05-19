@@ -1,0 +1,13 @@
+# Inherit default RuboCop rules
+inherit_gem:
+  rubocop-rails:
+    - config/default.yml
+  rubocop-performance:
+    - config/default.yml
+  rubocop-rspec:
+    - config/default.yml
+
+# Add specific rule customizations below
+# For example:
+# Style/Documentation:
+#   Enabled: false

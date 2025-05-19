@@ -24,8 +24,23 @@ bundle install
 You can run the MCP server directly:
 
 ```bash
-ruby ruby_mcp_app.rb
+ruby basic_app.rb
 ```
+
+## Dev Changes
+kill everything after making a code change.
+pkill -f projects.rb && pkill -f shortcut_mcp.rb
+
+
+You don't need to start it back. Cursor will on demand. You can if you want start it back lik:
+ruby project_mcp.rb --stdio
+
+### Troubleshooting and Testing
+`npx @modelcontextprotocol/inspector /Users/steveodom/.rbenv/shims/ru
+by /Users/steveodom/Documents/Projects/mcp-ruby/projects.rb`
+
+And then in your browser:
+http://127.0.0.1:6274/#tools
 
 ### Running as a Persistent Service
 
@@ -82,73 +97,3 @@ The server has been configured in your Cursor's MCP configuration file:
 
 ## Available Tools
 
-### Greet Tool
-
-Greets a person by name:
-
-```ruby
-# Example usage in client code:
-result = client.call_tool(
-  name: "greet",
-  args: {name: "World"}
-)
-# Returns: "Hello, World! Welcome to Ruby MCP."
-```
-
-### Calculate Tool
-
-Performs basic arithmetic operations:
-
-```ruby
-# Addition
-result = client.call_tool(
-  name: "calculate",
-  args: {operation: "add", a: 5.0, b: 3.0}
-)
-# Returns: "Result: 8.0"
-
-# Multiplication
-result = client.call_tool(
-  name: "calculate",
-  args: {operation: "multiply", a: 4.0, b: 7.0}
-)
-# Returns: "Result: 28.0"
-
-# Division
-result = client.call_tool(
-  name: "calculate",
-  args: {operation: "divide", a: 10.0, b: 2.0}
-)
-# Returns: "Result: 5.0"
-
-# Subtraction
-result = client.call_tool(
-  name: "calculate",
-  args: {operation: "subtract", a: 10.0, b: 4.0}
-)
-# Returns: "Result: 6.0"
-```
-
-## Extending the Server
-
-To add new tools or resources, edit the `ruby_mcp_app.rb` file:
-
-```ruby
-# Add a new tool
-tool "new_tool_name" do
-  description "Description of what the tool does"
-  argument :param_name, Type, required: true, description: "Parameter description"
-  call do |args|
-    # Tool implementation
-  end
-end
-```
-
-## Debugging
-
-If you encounter any issues, check:
-- Correct paths in your MCP configuration
-- Proper gem installation
-- Tool parameter types (e.g., Float vs Integer)
-- **Server running status**: Make sure the MCP server is actually running
-- Check the debug log file at `/Users/steveodom/Documents/Projects/mcp-ruby/mcp_app.log`
