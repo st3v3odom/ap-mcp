@@ -1,0 +1,30 @@
+{
+  "autorun": true,
+  "terminals": [
+    {
+      "name": "Browser Tools MCP Server",
+      "description": "this is the mcp server",
+      "focus": false,
+      "cwd": "/Users/steveodom/Documents/Projects",
+      "command": "npx @agentdeskai/browser-tools-mcp@latest"
+    },
+    {
+      "name": "Browser Tools Server",
+      "description": "this communicates with the browser",
+      "focus": false,
+      "cwd": "/Users/steveodom/Documents/Projects",
+      "commands": [
+        "npx @agentdeskai/browser-tools-server@latest"
+      ]
+    },
+    {
+      "name": "MCP Troubleshooting",
+      "description": "http://127.0.0.1:6274/#tools",
+      "focus": false,
+      "cwd": "/Users/steveodom/Documents/Projects",
+      "commands": [
+        "npx @modelcontextprotocol/inspector /Users/steveodom/.rbenv/shims/ruby /Users/steveodom/Documents/Projects/mcp-ruby/projects.rb"
+      ]
+    }
+  ]
+}

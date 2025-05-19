@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Your rule content
+
+- [projects.rb](mdc:projects.rb) creates a mcp server using ruby fast-mcp gem
+- The tools are defined in tools

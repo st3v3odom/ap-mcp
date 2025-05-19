@@ -1,0 +1,10 @@
+# Projects configuration
+# Each project should have a name, directory path, and log file path
+
+ragbot:
+  dir: "/Users/steveodom/Documents/Projects/ragbot"
+  log: "log/development.log"
+
+sso:
+  dir: "/Users/steveodom/Documents/Projects/sso"
+  log: "log/development.log"
