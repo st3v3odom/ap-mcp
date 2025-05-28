@@ -2,7 +2,7 @@
 
 It requires ruby 3.3
 
-A simple Ruby MCP (Model Context Protocol) server implementation using the [mcp-rb](https://github.com/funwarioisii/mcp-rb) gem.
+A simple Ruby MCP (Model Context Protocol) server implementation using the [Fast MCP](https://github.com/yjacquin/fast-mcp) gem.
 
 ## Cursor Integration
 
