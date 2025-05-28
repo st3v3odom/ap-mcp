@@ -40,7 +40,7 @@ bundle install
 You can run the MCP server directly:
 
 ```bash
-ruby basic_app.rb
+ruby project_app.rb
 ```
 
 ## Dev Changes
