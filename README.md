@@ -4,6 +4,22 @@ It requires ruby 3.3
 
 A simple Ruby MCP (Model Context Protocol) server implementation using the [mcp-rb](https://github.com/funwarioisii/mcp-rb) gem.
 
+## Cursor Integration
+
+The server has been configured in your Cursor's MCP configuration file:
+
+```json
+   "project-mcp": {
+      "command": "/Users/steveodom/.rbenv/shims/ruby",
+      "args": [
+        "/Users/steveodom/Documents/Projects/mcp-ruby/projects.rb",
+        "--stdio"
+      ],
+      "transport": "stdio",
+      "enabled": true
+    },
+```
+
 ## Installation
 
 1. Make sure you have Ruby installed
@@ -29,7 +45,7 @@ ruby basic_app.rb
 
 ## Dev Changes
 kill everything after making a code change.
-pkill -f projects.rb && pkill -f shortcut_mcp.rb
+pkill -f projects.rb && pkill -f projects.rb
 
 
 You don't need to start it back. Cursor will on demand. You can if you want start it back lik:
@@ -77,23 +93,4 @@ A test client is included to demonstrate how to interact with the MCP server:
 ruby test_client.rb
 ```
 
-## Cursor Integration
-
-The server has been configured in your Cursor's MCP configuration file:
-
-```json
-{
-  "ruby-mcp-demo": {
-    "command": "ruby",
-    "args": [
-      "/Users/steveodom/Documents/Projects/mcp-ruby/ruby_mcp_app.rb",
-      "--stdio",
-      "--debug"
-    ],
-    "enabled": true
-  }
-}
-```
-
-## Available Tools
 
