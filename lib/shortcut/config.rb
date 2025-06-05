@@ -6,7 +6,7 @@ module Shortcut
     module_function
 
     def api_key
-      ENV['SHORTCUT_API_TOKEN'] || raise("SHORTCUT_API_TOKEN environment variable is required")
+      ENV['SHORTCUT_API_TOKEN']
     end
 
     def endpoint

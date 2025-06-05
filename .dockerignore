@@ -1,0 +1,16 @@
+.git
+.gitignore
+README.md
+EXTERNAL_SERVER_README.md
+Dockerfile
+.dockerignore
+fly.toml
+deploy.sh
+*.log
+.DS_Store
+.vscode
+.idea
+projects.rb
+projects.yml
+test_client.rb
+mcp_server.log

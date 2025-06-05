@@ -28,9 +28,22 @@ server.register_tool(CurrentProjectTool)
 server.register_tool(DevLogSearchTool)
 server.register_tool(GetStoryTool)
 server.register_tool(GetBranchTool)
-server.register_tool(DatadogLogSearchTool)
 server.register_tool(LocalHealthTool)
 
+# Determine transport method from command line args or environment
+transport = ARGV.include?('--stdio') ? :stdio : (ENV['MCP_TRANSPORT']&.to_sym || :sse)
+port = ENV['PORT'] || 8000
+
 # Start the server
-$logger.info("Starting Fast-MCP server with tools: #{server.tools.keys.join(', ')}")
-server.start
+$logger.info("Starting Fast-MCP server with transport: #{transport}")
+$logger.info("Available tools: #{server.tools.keys.join(', ')}")
+
+# Note: fast-mcp gem only supports stdio transport via the start method
+# For HTTP/SSE transport, we would need to use Rack middleware
+if transport == :stdio
+  server.start
+else
+  $logger.error("This version of fast-mcp only supports stdio transport via server.start")
+  $logger.error("For HTTP/SSE transport, use Rack middleware integration")
+  exit 1
+end

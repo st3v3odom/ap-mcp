@@ -5,7 +5,7 @@ module Datadog
     module_function
 
     def api_key
-      ENV['DATADOG_KEY_ID']
+      ENV['DATADOG_API_KEY']
     end
 
     def application_key
