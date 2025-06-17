@@ -23,6 +23,7 @@ use FastMcp::RackMiddleware.new(name: 'external-mcp', version: '1.0.0') do |serv
   # Register only external API-based tools (remote-friendly versions)
   server.register_tool(RemoteGetStoryTool)
   server.register_tool(DatadogLogSearchTool)
+  server.register_tool(DatadogFailedCreditCardTool)
 
   $logger.info("Registered tools: #{server.tools.keys.join(', ')}")
 end
@@ -35,7 +36,7 @@ get '/' do
     server: 'external-mcp',
     version: '1.0.0',
     sse_endpoint: '/sse',
-    tools: ['RemoteGetStoryTool', 'DatadogLogSearchTool']
+    tools: ['RemoteGetStoryTool', 'DatadogLogSearchTool', 'DatadogFailedCreditCardTool']
   }.to_json
 end
 

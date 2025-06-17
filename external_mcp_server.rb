@@ -19,6 +19,7 @@ server = FastMcp::Server.new(name: 'external-mcp', version: '1.0.0')
 # Register only external API-based tools (remote-friendly versions)
 server.register_tool(RemoteGetStoryTool)
 server.register_tool(DatadogLogSearchTool)
+server.register_tool(DatadogFailedCreditCardTool)
 
 $logger.info("Starting External MCP server with stdio transport")
 $logger.info("Available tools: #{server.tools.keys.join(', ')}")
