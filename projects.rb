@@ -3,6 +3,10 @@
 
 require 'fast_mcp'
 require 'logger'
+require 'dotenv'
+
+# Load environment variables from .env file
+Dotenv.load
 require_relative 'lib/shortcut/api'
 require_relative 'tools/project/project_helper'
 require_relative 'tools/project/switch_project_tool'
@@ -13,6 +17,17 @@ require_relative 'tools/git/get_branch_tool'
 require_relative 'lib/datadog/api'
 require_relative 'tools/datadog/log_search_tool'
 require_relative 'tools/local_dev/local_health_tool'
+require_relative 'lib/supabase/api'
+require_relative 'tools/supabase/create_note_tool'
+require_relative 'tools/supabase/get_note_tool'
+require_relative 'tools/supabase/update_note_tool'
+require_relative 'tools/supabase/delete_note_tool'
+require_relative 'tools/supabase/search_notes_tool'
+# require_relative 'tools/supabase/search_notes_semantic_tool'  # Commented out - requires OpenAI API
+require_relative 'tools/supabase/create_link_tool'
+require_relative 'tools/supabase/get_linked_notes_tool'
+require_relative 'tools/supabase/find_similar_notes_tool'
+require_relative 'tools/supabase/get_all_tags_tool'
 
 # Configure logging
 $logger = Logger.new(File.expand_path('mcp_server.log', __dir__), 'daily')
@@ -29,6 +44,18 @@ server.register_tool(DevLogSearchTool)
 server.register_tool(GetStoryTool)
 server.register_tool(GetBranchTool)
 server.register_tool(LocalHealthTool)
+
+# Register Supabase Zettelkasten tools
+server.register_tool(CreateNoteTool)
+server.register_tool(GetNoteTool)
+server.register_tool(UpdateNoteTool)
+server.register_tool(DeleteNoteTool)
+server.register_tool(SearchNotesTool)
+# server.register_tool(SearchNotesSemanticTool)  # Commented out - requires OpenAI API
+server.register_tool(CreateLinkTool)
+server.register_tool(GetLinkedNotesTool)
+server.register_tool(FindSimilarNotesTool)
+server.register_tool(GetAllTagsTool)
 
 # Determine transport method from command line args or environment
 transport = ARGV.include?('--stdio') ? :stdio : (ENV['MCP_TRANSPORT']&.to_sym || :sse)
